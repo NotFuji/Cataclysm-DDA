@@ -908,7 +908,7 @@ bool map::process_fields_in_submap( submap *const current_submap,
 
                             // Consume the terrain we're on
                             if( ter_furn_has_flag( ter, frn, TFLAG_FLAMMABLE ) ) {
-                                if( one_in( std::max( 4 - cur.getFieldDensity(), 1 ) ) ) {
+                                if( one_in( 4 - cur.getFieldDensity()) ) {
                                     // The fire feeds on the ground itself until max density.
                                     time_added += 1_turns * ( 5 - cur.getFieldDensity() );
                                 }
@@ -920,7 +920,7 @@ bool map::process_fields_in_submap( submap *const current_submap,
 
                             } else if( ter_furn_has_flag( ter, frn, TFLAG_FLAMMABLE_HARD ) &&
                                        one_in( 3 ) ) {
-                                if( one_in( std::max( 5 - cur.getFieldDensity(), 1 ) ) ) {
+                                if( one_in( 5 - cur.getFieldDensity()) ) {
                                     // The fire feeds on the ground itself until max density.
                                     time_added += 1_turns * ( 4 - cur.getFieldDensity() );
                                 }
@@ -931,7 +931,7 @@ bool map::process_fields_in_submap( submap *const current_submap,
                                 }
 
                             } else if( ter.has_flag( TFLAG_FLAMMABLE_ASH ) ) {
-                                if( one_in( std::max( 4 - cur.getFieldDensity(), 1 ) ) ) {
+                                if( one_in( 4 - cur.getFieldDensity()) ) {
                                     // The fire feeds on the ground itself until max density.
                                     time_added += 1_turns * ( 5 - cur.getFieldDensity() );
                                 }
@@ -942,7 +942,7 @@ bool map::process_fields_in_submap( submap *const current_submap,
                                 }
 
                             } else if( frn.has_flag( TFLAG_FLAMMABLE_ASH ) ) {
-                                if( one_in( std::max( 4 - cur.getFieldDensity(), 1 ) ) ) {
+                                if( one_in( 4 - cur.getFieldDensity() ) ) {
                                     // The fire feeds on the ground itself until max density.
                                     time_added += 1_turns * ( 5 - cur.getFieldDensity() );
                                 }
