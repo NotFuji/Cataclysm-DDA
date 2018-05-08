@@ -977,7 +977,6 @@ bool firestarter_actor::prep_firestarter_use( const player &p, tripoint &pos )
         bool has_unactivated_brazier = false; // Check for a brazier.
 
         double tinder = 0;
-        bool can_burn = false;
         for( const auto &i : g->m.i_at( pos ) ) {
             if( i.typeId() == "brazier" ) {
                 has_unactivated_brazier = true;
