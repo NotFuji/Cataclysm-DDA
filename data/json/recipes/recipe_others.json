@@ -3980,7 +3980,7 @@
     "components": [ [ [ "chain_link", 1000 ] ], [ [ "wire", 1 ] ] ]
   },
   {
-    "type" : "recipe",
+    "type": "recipe",
     "result": "tinderbox",
     "category": "CC_OTHER",
     "subcategory": "CSC_OTHER_TOOLS",
@@ -3990,17 +3990,11 @@
     "time": 5000,
     "autolearn": true,
     "book_learn": [ [ "mag_survival", 1 ], [ "textbook_survival", 1 ] ],
-    "qualities" : [ { "id": "CUT", "level": 1 } ],
-    "components": [ 
-      [
-        [ "can_drink_unsealed", 1 ],
-        [ "can_food_unsealed", 1 ],
-        [ "scrap", 2 ]
-      ]
-    ]
+    "qualities": [ { "id": "CUT", "level": 1 } ],
+    "components": [ [ [ "can_drink_unsealed", 1 ], [ "can_food_unsealed", 1 ], [ "scrap", 2 ] ] ]
   },
   {
-    "type" : "recipe",
+    "type": "recipe",
     "result": "hobo_stove",
     "category": "CC_OTHER",
     "subcategory": "CSC_OTHER_TOOLS",
@@ -4010,13 +4004,7 @@
     "time": 5000,
     "autolearn": true,
     "book_learn": [ [ "mag_survival", 2 ], [ "textbook_survival", 1 ], [ "cookbook", 2 ] ],
-    "qualities" : [ { "id": "CUT", "level": 1 } ],
-    "components": [ 
-      [
-        [ "can_drink_unsealed", 2 ],
-        [ "can_food_unsealed", 2 ],
-        [ "scrap", 4 ]
-      ]
-    ]
+    "qualities": [ { "id": "CUT", "level": 1 } ],
+    "components": [ [ [ "can_drink_unsealed", 2 ], [ "can_food_unsealed", 2 ], [ "scrap", 4 ] ] ]
   }
 ]
