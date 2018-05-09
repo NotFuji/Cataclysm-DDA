@@ -1,5 +1,11 @@
 [
   {
+    "id": "tinder",
+    "name": "tinder",
+    "default": "tinder",
+    "type": "ammunition_type"
+  },
+  {
     "id": "javelin",
     "name": "javelin",
     "default": "javelin",
