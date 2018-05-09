@@ -780,6 +780,9 @@ public:
     bool flammable( int threshold = 0 ) const;
     /*@}*/
 
+    //Returns the amount of fuel provided to a minimal (intensity = 1) fire;
+    float flammability() const;
+
     /**
      * Resistance against different damage types (@ref damage_type).
      * Larger values means more resistance are thereby better, but there is no absolute value to

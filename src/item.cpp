@@ -1649,6 +1649,18 @@ std::string item::info( bool showtext, std::vector<iteminfo> &info, int batch ) 
             info.push_back( iteminfo( "BASE", string_format( _( "* This item <bad>conducts</bad> electricity." ) ) ) );
         }
 
+        if( flammable() ) {
+            if( flammability() >= 1 ) {
+                info.push_back( iteminfo( "BASE", string_format( _( "* This item <good>will burn easily</good>." ) ) ) );
+            } else if( flammability() < 1 && volume() <= 1000_ml ) {
+                info.push_back( iteminfo( "BASE", string_format( _( "* This item <good>will burn easily</good> and can be used as tinder." ) ) ) );
+            } else {
+                info.push_back( iteminfo( "BASE", string_format( _( "* This item <bad>will not burn</bad> without tinder." ) ) ) );
+            }
+        } else {
+            info.push_back( iteminfo( "BASE", string_format( _( "* This item <good>will not burn</good>." ) ) ) );
+        }
+
         // concatenate base and acquired flags...
         std::vector<std::string> flags;
         std::set_union( type->item_tags.begin(), type->item_tags.end(),
@@ -4987,7 +4999,7 @@ bool item::flammable( int threshold ) const
         return false;
     }
 
-    int flammability = 0;
+    float flammability = 0;
     int chance = 0;
     for( const auto &m : mats ) {
         const auto &bd = m->burn_data( 1 );
@@ -5014,6 +5026,16 @@ bool item::flammable( int threshold ) const
     }
 
     return flammability > threshold;
+}
+
+float item::flammability() const {
+    const auto &mats = made_of_types();
+    std::vector<float> matfuel;
+    for( auto m : mats ) {
+        matfuel.emplace_back( m->burn_data( 1 ).fuel );
+    }
+
+    return *std::max_element( matfuel.begin(), matfuel.end() );
 }
 
 itype_id item::typeId() const

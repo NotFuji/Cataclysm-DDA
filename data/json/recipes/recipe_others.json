@@ -3978,5 +3978,33 @@
     "book_learn": [ [ "textbook_armwest", 2 ], [ "textbook_fabrication", 2 ], [ "recipe_melee", 2 ] ],
     "using": [ [ "chainmail_standard", 1 ] ],
     "components": [ [ [ "chain_link", 1000 ] ], [ [ "wire", 1 ] ] ]
+  },
+  {
+    "type": "recipe",
+    "result": "tinderbox",
+    "category": "CC_OTHER",
+    "subcategory": "CSC_OTHER_TOOLS",
+    "skill_used": "survival",
+    "skills_required": [ "fabrication", 2 ],
+    "difficulty": 2,
+    "time": 5000,
+    "autolearn": true,
+    "book_learn": [ [ "mag_survival", 1 ], [ "textbook_survival", 1 ] ],
+    "qualities": [ { "id": "CUT", "level": 1 } ],
+    "components": [ [ [ "can_drink_unsealed", 1 ], [ "can_food_unsealed", 1 ], [ "scrap", 2 ] ] ]
+  },
+  {
+    "type": "recipe",
+    "result": "hobo_stove",
+    "category": "CC_OTHER",
+    "subcategory": "CSC_OTHER_TOOLS",
+    "skill_used": "survival",
+    "skills_required": [ "fabrication", 1 ],
+    "difficulty": 4,
+    "time": 5000,
+    "autolearn": true,
+    "book_learn": [ [ "mag_survival", 2 ], [ "textbook_survival", 1 ], [ "cookbook", 2 ] ],
+    "qualities": [ { "id": "CUT", "level": 1 } ],
+    "components": [ [ [ "can_drink_unsealed", 2 ], [ "can_food_unsealed", 2 ], [ "scrap", 4 ] ] ]
   }
 ]

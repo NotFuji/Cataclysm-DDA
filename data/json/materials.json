@@ -878,9 +878,9 @@
     "bash_dmg_verb": "splintered",
     "cut_dmg_verb": "gouged",
     "burn_data": [
-      { "fuel": 1, "smoke": 1, "burn": 0.02, "chance": 5 },
-      { "fuel": 2, "smoke": 1, "burn": 0.04, "chance": 20 },
-      { "fuel": 3, "smoke": 1, "burn": 0.06 }
+      { "fuel": 0.8, "smoke": 1, "burn": 0.008, "chance": 2 },
+      { "fuel": 1.6, "smoke": 1, "burn": 0.02, "chance": 8 },
+      { "fuel": 3, "smoke": 1, "burn": 0.08, "chance": 30  }
     ],
     "burn_products": [ [ "ash", 0.018 ] ]
   },
