@@ -973,52 +973,22 @@ bool firestarter_actor::prep_firestarter_use( const player &p, tripoint &pos )
     if( g->m.flammable_items_at( pos ) ||
         g->m.has_flag( "FLAMMABLE", pos ) || g->m.has_flag( "FLAMMABLE_ASH", pos ) ||
         g->m.get_field_strength( pos, fd_web ) > 0 ) {
-        
-        bool has_unactivated_brazier = false; // Check for a brazier.
-
-        double tinder = 0;
+        // Check for a brazier.
+        bool has_unactivated_brazier = false;
         for( const auto &i : g->m.i_at( pos ) ) {
             if( i.typeId() == "brazier" ) {
                 has_unactivated_brazier = true;
-            }
-            if( ( i.volume() < 1000_ml || ( i.count_by_charges() && i.type->volume < 1000_ml ) ) && i.flammable() ) {
-                float fuel = 0;
-                float burn = 0;
-                for( const auto &m : i.made_of_types() ) {
-                    fuel = std::max( m->burn_data( 1 ).fuel, fuel );
-                    burn = std::max( m->burn_data( 1 ).burn, burn );
-                }
-                tinder += ( i.volume().value() * ( fuel / burn ) ) / 1000;
             }
         }
         if( has_unactivated_brazier &&
             !query_yn(_("There's a brazier there but you haven't set it up to contain the fire. Continue?")) ) {
             return false;
         }
-
-        if( g->m.flammable_items_at( pos, 1) ) {
-            return true;
-        } else {
-            if( ( tinder > 50 ) ) {
-                return true;
-            } else if( tinder > 0 && tinder <= 50) {
-                if( query_yn( _( "There is not enough tinder here to sustain a fire. Continue?" ) ) ) {
-                    return true;
-                }
-            } else if( tinder <= 0 ) {
-                if( query_yn( _( "This might not light without tinder. Continue?" ) ) ) {
-                    return true;
-                }
-            } else {
-                return false;
-            }
-        }
-        
+        return true;
     } else {
         p.add_msg_if_player(m_info, _("There's nothing to light there."));
         return false;
     }
-    return false;
 }
 
 void firestarter_actor::resolve_firestarter_use( const player &p, const tripoint &pos )
