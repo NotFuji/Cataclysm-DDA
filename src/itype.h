@@ -589,6 +589,11 @@ struct islot_ammo : common_ranged_data {
      * @warning It is not read from the json directly.
      * */
     bool special_cookoff = false;
+
+    /**
+      * The number of projectiles this ammo fires per single shot
+      */
+    int proj_per_shot = 1;
 };
 
 struct islot_bionic {

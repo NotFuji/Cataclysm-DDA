@@ -225,6 +225,8 @@ int player::fire_gun( const tripoint &target, int shots, item& gun )
             break;
         }
 
+        int shot_count = gun.ammo_data()->ammo->proj_per_shot;
+        
         dispersion_sources dispersion = get_weapon_dispersion( gun );
         dispersion.add_range( recoil_total() );
 
@@ -233,6 +235,20 @@ int player::fire_gun( const tripoint &target, int shots, item& gun )
 
         auto shot = projectile_attack( make_gun_projectile( gun ), pos(), aim, dispersion, this, in_veh );
         curshot++;
+
+        if( shot.hit_critter ) {
+            hits++;
+        }
+
+        for( int i = 0; i < shot_count - 1; i++ ) {
+            dispersion_sources add_dispersion( gun.gun_dispersion() );
+
+            auto add_shot = projectile_attack( make_gun_projectile( gun ), pos(), aim, add_dispersion, this, in_veh );
+
+            if( add_shot.hit_critter ) {
+                hits++;
+            }
+        }
 
         int qty = gun.gun_recoil( *this, bipod );
         delay  += qty * absorb;
@@ -256,10 +272,6 @@ int player::fire_gun( const tripoint &target, int shots, item& gun )
 
         if( shot.missed_by <= .1 ) {
             lifetime_stats.headshots++; // @todo: check head existence for headshot
-        }
-
-        if( shot.hit_critter ) {
-            hits++;
         }
 
         if( gun.gun_skill() == skill_launcher ) {

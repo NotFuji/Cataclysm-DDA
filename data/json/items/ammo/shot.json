@@ -50,10 +50,12 @@
     "stack_size": 20,
     "ammo_type": "shot",
     "casing": "shot_hull",
-    "range": 6,
-    "damage": 50,
-    "recoil": 2500,
+    "range": 12,
+    "damage": 20,
+    "recoil": 300,
     "loudness": 160,
+    "proj_per_shot": 8,
+    "dispersion": 500,
     "effects": [ "COOKOFF", "SHOT" ]
   },
   {
